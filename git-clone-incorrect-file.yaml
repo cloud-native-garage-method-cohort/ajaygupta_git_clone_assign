@@ -1,0 +1,16 @@
+piVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: markdown-lining-pipeline
+spec
+  params:
+    - name: source-repo
+      type: string
+      description: Source code repository
+  workspaces:
+    - name: pipeline-shared-data
+  tasks:
+    -   name: clone-repository
+        taskRef:
+          kind: ClusterTask
+          name: git-clone
